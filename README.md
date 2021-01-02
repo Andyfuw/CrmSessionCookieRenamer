@@ -24,13 +24,13 @@ ref : https://support.microsoft.com/en-us/help/3045286/passive-federation-reques
  there is a simple way to resolve this problem by rename the cookie name. 
 
 the dynamics cookie writed by HttpModule: CrmSessionAuthenticationManager.
-This module use ICookieHandler to write tookie to browser. 
- we have a chance to rename to cookie name before the cookie be writed.
+This module use ICookieHandler to write the cookie to browser. 
+We have a chance to rename the cookie name before the cookie be writed to browser.
 
 
-IIS support dynamic module, we can dynamic register a new HttpModule,
-when this module initing, modify another module which initialized before .
-here is the code.
+IIS support dynamic module, we can dynamicly register a new HttpModule,
+When this module initing, modify another module which initialized before .
+Here is the code.
 
 
 ``` csharp
@@ -97,7 +97,7 @@ and register it for auto start when site restart.
 ```
 
 
-build the project. and copy two dll to CRMWeb\bin, it work fine.
+build the project. and copy two dlls to CRMWeb\bin, it work fine.
 
 <b>
 warning: This is an unsupported approach, full testing before apply it to production environments.
