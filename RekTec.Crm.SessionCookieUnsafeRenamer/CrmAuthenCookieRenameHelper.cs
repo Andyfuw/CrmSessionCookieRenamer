@@ -1,4 +1,4 @@
-﻿using System.IdentityModel.Services;
+﻿using Microsoft.IdentityModel.Web;
 using System.Web;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using RekTec.Crm.SessionCookieUnsafeRenamer;
@@ -21,7 +21,7 @@ namespace RekTec.Crm.SessionCookieUnsafeRenamer
 	public class CrmAuthenCookieRenameModule : IHttpModule
 	{
 		// This is the new cookie name which will be send to browser.
-		private static readonly string CrmCookieName = "CRM_MSISAuth";
+		private static readonly string CrmCookieName = $"{Properties.Settings.Default.OrgName}_MSISAuth";
 
 		public void Init(HttpApplication context)
 		{
@@ -34,7 +34,7 @@ namespace RekTec.Crm.SessionCookieUnsafeRenamer
 				{
 					if(!CrmCookieName.Equals(cookieHandler.Name))
 					{
-						cookieHandler.Name = CrmCookieName;						
+						cookieHandler.Name = CrmCookieName;
 					}
 
 					// we can change domain here, but it will be more complex to get the domain name.
